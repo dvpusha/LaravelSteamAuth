@@ -1,7 +1,7 @@
 {
     "name": "pusha/steamauth",
-    "description": "SteamAuth",
-    "homepage": "https://github.com/dvpusha/SteamAuth",
+    "description": "SteamAuth for Laravel 5",
+    "homepage": "https://github.com/dvpusha/LaravelSteamAuth",
     "version": "1.0.0",
     "require": {
 		"php": ">=5.6",
