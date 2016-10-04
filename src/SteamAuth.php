@@ -170,8 +170,11 @@ class SteamAuth implements SteamAuthInterface
     {
         if (!is_null($this->steam_ID))
         {
-            $user_info  = file_get_contents(sprintf(self::STEAM_DATA_URL,  Config::get('steam-auth.api_key'), $this->steam_ID));
-            $user_level = file_get_contents(sprintf(self::STEAM_LEVEL_URL, Config::get('steam-auth.api_key'), $this->steam_ID));
+            $api_keys = Config::get('steam-auth.api_keys');
+            $api_key  = $api_keys[array_rand($api_keys)];
+
+            $user_info  = file_get_contents(sprintf(self::STEAM_DATA_URL,  $api_key, $this->steam_ID));
+            $user_level = file_get_contents(sprintf(self::STEAM_LEVEL_URL, $api_key, $this->steam_ID));
 
             $user_info  = json_decode($user_info,  true)["response"]["players"][0];
             $user_level = json_decode($user_level, true)['response']['player_level'];
