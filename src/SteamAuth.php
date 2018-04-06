@@ -36,7 +36,7 @@ class SteamAuth implements SteamAuthInterface
     /**
      * @var string
      */
-    const STEAM_DATA_URL = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=%s&steamids=%s';
+    const STEAM_DATA_URL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=%s&steamids=%s';
 
     /**
      * @var string
@@ -97,7 +97,7 @@ class SteamAuth implements SteamAuthInterface
                 ),
             ));
             $result = file_get_contents(self::OPENID_URL, false, $context);
-            preg_match("#^http://steamcommunity.com/openid/id/([0-9]{17,25})#", $get['openid_claimed_id'], $matches);
+            preg_match("#^https?://steamcommunity.com/openid/id/([0-9]{17,25})#", $get['openid_claimed_id'], $matches);
             $this->steam_ID = is_numeric($matches[1]) ? $matches[1] : 0;
             $this->parseData();
 
