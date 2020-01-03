@@ -177,7 +177,7 @@ class SteamAuth implements SteamAuthInterface
             $user_level = file_get_contents(sprintf(self::STEAM_LEVEL_URL, $api_key, $this->steam_ID));
 
             $user_info  = json_decode($user_info,  true)["response"]["players"][0];
-            $user_level = json_decode($user_level, true)['response']['player_level'];
+            $user_level = json_decode($user_level, true)['response']['player_level'] ?? null;
 
             $this->steam_data_user = new SteamData($user_info, $user_level);
         }
